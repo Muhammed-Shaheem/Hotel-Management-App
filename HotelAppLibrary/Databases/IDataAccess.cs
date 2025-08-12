@@ -6,9 +6,9 @@ public interface IDataAccess
     List<T> LoadData<T, U>(string sqlStatement,
                            U parameters,
                            string connectionStringName,
-                           dynamic? options = null);
+                           bool isStoreProcedure = false);
     void SaveData<T>(string sqlStatement,
                      T parameters,
                      string connectionStringName,
-                     dynamic? options = null);
+                     bool isStoreProcedure = false);
 }
