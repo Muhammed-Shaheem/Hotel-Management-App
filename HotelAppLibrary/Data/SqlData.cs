@@ -1,7 +1,5 @@
 ﻿using HotelAppLibrary.Databases;
 using HotelAppLibrary.Models;
-using Microsoft.Extensions.Configuration;
-using System.ComponentModel.DataAnnotations;
 
 namespace HotelAppLibrary.Data;
 
@@ -30,7 +28,7 @@ public class SqlData
 
     public void BookGuest(string firstName, string lastName, DateTime startDate, DateTime endDate, int roomTypeId)
     {
-        GuestModel guest = db.LoadData<GuestModel, dynamic>("spGuests_Insert",
+        FullBookingModel guest = db.LoadData<FullBookingModel, dynamic>("spGuests_Insert",
                                           new { firstName, lastName },
                                           connectionStringName,
                                           true).First();
@@ -41,7 +39,7 @@ public class SqlData
 
         var stayingTime = endDate.Date.Subtract(startDate.Date);
         decimal totalCost = stayingTime.Days * price;
-        
+
 
         RoomModel room = db.LoadData<RoomModel, dynamic>(
             "sp_GetAvailableRooms",
@@ -51,13 +49,20 @@ public class SqlData
 
         db.SaveData(
             "spBookings_Insert",
-            new { roomId = room.Id, guestId = guest.Id, startDate, endDate,to },
+            new { roomId = room.Id, guestId = guest.Id, startDate, endDate, totalCost },
             connectionStringName,
             true);
 
 
     }
 
-   
-    
+    public List<FullBookingModel> SearchBookings(string lastName)
+    {
+       return  db.LoadData<FullBookingModel,dynamic>("spBookings_Search",
+                    new { lastName },
+                    connectionStringName,
+                    true);
+
+    }
+
 }
