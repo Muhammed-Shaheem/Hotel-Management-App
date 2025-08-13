@@ -28,7 +28,7 @@ public class SqlData
 
     public void BookGuest(string firstName, string lastName, DateTime startDate, DateTime endDate, int roomTypeId)
     {
-        FullBookingModel guest = db.LoadData<FullBookingModel, dynamic>("spGuests_Insert",
+         GuestModel guest = db.LoadData<GuestModel, dynamic>("spGuests_Insert",
                                           new { firstName, lastName },
                                           connectionStringName,
                                           true).First();
@@ -65,4 +65,12 @@ public class SqlData
 
     }
 
+
+    public void CheckInGuest(int id)
+    {
+        db.SaveData("spBookings_CheckIn",
+                    new { id },
+                    connectionStringName,
+                    true);
+    }
 }
