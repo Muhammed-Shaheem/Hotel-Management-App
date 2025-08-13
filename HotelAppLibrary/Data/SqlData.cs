@@ -51,26 +51,13 @@ public class SqlData
 
         db.SaveData(
             "spBookings_Insert",
-            new { roomId = room.Id, guestId = guest.Id, startDate, endDate,totalCost },
+            new { roomId = room.Id, guestId = guest.Id, startDate, endDate,to },
             connectionStringName,
             true);
 
 
     }
 
-    private void InsertIntoBookings(int guestId, DateTime startDate, DateTime endDate, int roomId, decimal totalCost)
-    {
-        db.SaveData<dynamic>("dbo.spInsertIntoBookings",
-                    new { roomId, guestId, startDate, endDate, totalCost },
-                    connectionStringName,
-                    true);
-    }
-
-    private int GetRoomNumber(string roomTitle)
-    {
-        return db.LoadData<int, dynamic>("dbo.spGetAvailableRoomsForRoomTypes",
-                                     new { roomTitle },
-                                     connectionStringName,
-                                     true).First();
-    }
+   
+    
 }
