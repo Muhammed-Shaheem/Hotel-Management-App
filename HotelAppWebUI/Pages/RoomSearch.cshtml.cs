@@ -36,4 +36,9 @@ public class RoomSearchModel : PageModel
         return Page();
        
     }
+
+    public void OnBookRoomClick()
+    {
+
+    }
 }

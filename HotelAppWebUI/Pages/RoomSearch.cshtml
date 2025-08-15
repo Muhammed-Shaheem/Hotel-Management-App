@@ -27,13 +27,13 @@
 {
     <h2>Results</h2>
 
-    <table class="table table-bordered table-primary">
+    <table class="table table-bordered  ">
         <thead >
             <tr>
                 <td><strong>RoomType</strong> </td>
                 <td> <strong>Description</strong></td>
                 <td><strong>Price</strong></td>
-                <td><strong>Book</strong></td>
+                <td></td>
             </tr>
 
         </thead>
@@ -46,7 +46,7 @@
                     <td>@roomType.Title</td>
                     <td>@roomType.Description</td>
                     <td> @string.Format("{0:C}",roomType.Price) </td>
-                    <td><button class="btn btn-primary">Book Room</button></td>
+                    <td><a href="/BookRoom?Id=@roomType.Id">Book Room</a></td>
                 </tr>
 
         }

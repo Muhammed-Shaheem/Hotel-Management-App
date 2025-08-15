@@ -1,0 +1,19 @@
+﻿@page
+@model HotelAppWebUI.Pages.BookRoomModel
+@{
+    ViewData["Title"] = "Book Room";
+}
+
+<form  method="post">
+
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName" />
+    
+    
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName" />
+
+    <button class="btn btn-primary">Book</button>
+
+
+</form>
