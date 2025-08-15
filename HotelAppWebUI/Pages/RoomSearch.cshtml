@@ -1,0 +1,76 @@
+﻿@page
+@model HotelAppWebUI.Pages.RoomSearchModel
+@{
+    ViewData["Title"] = "Search Room";
+}
+
+<h1>Room Search</h1>
+<form method="post">
+
+
+    <label asp-for="StartDate"></label>
+    <input asp-for="StartDate" />
+
+
+
+    <label asp-for="EndDate"></label>
+    <input asp-for="EndDate" />
+
+
+    <button class="btn btn-primary" type="submit">Search</button>
+
+</form>
+
+
+
+@if (Model.roomTypes?.Count > 0)
+{
+    <h2>Results</h2>
+
+    <table class="table table-bordered table-primary">
+        <thead >
+            <tr>
+                <td><strong>RoomType</strong> </td>
+                <td> <strong>Description</strong></td>
+                <td><strong>Price</strong></td>
+                <td><strong>Book</strong></td>
+            </tr>
+
+        </thead>
+            <tbody>
+
+        @foreach (var roomType in Model.roomTypes)
+        {
+
+                <tr>
+                    <td>@roomType.Title</td>
+                    <td>@roomType.Description</td>
+                    <td> @string.Format("{0:C}",roomType.Price) </td>
+                    <td><button class="btn btn-primary">Book Room</button></td>
+                </tr>
+
+        }
+
+            </tbody>    
+    </table>
+   
+}
+
+@* @{
+    foreach (var roomType in Model.roomTypes)
+    {
+        <div class="container row text-center bg-danger-subtle">
+
+            <div class="col-6" style="border:1px solid black">
+                <h5>@roomType.Title</h5>
+            </div>
+
+            <div class="col-6 style=" style="border:1px solid black">
+                <h5>@roomType.Description</h5>
+            </div>
+        </div>
+    }
+}
+
+
+ *@
