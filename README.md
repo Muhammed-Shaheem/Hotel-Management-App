@@ -18,7 +18,7 @@ This MVP (Minimum Viable Product) focuses on delivering just the core functional
 
 | Layer                | Tech Used           |
 |---------------------|---------------------|
-| Backend             | ASP.NET Core (.NET 6/7) |
+| Backend             | ASP.NET Core (.NET 9) |
 | ORM / DB Access     | Dapper               |
 | Database            | SQL Server           |
 | API Design          | RESTful APIs         |
