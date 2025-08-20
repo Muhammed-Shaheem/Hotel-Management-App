@@ -3,15 +3,19 @@
 @{
     ViewData["Title"] = "Book Room";
 }
+<h1 class="accordion-header">Book A Room</h1>
+
+<h2>@Model.RoomType.Title</h2>
+<p>@Model.RoomType.Description</p>
 
 <form  method="post">
 
-    <label asp-for="FirstName"></label>
-    <input asp-for="FirstName" />
+    <label asp-for="FirstName" ></label>
+    <input asp-for="FirstName" required />
     
     
     <label asp-for="LastName"></label>
-    <input asp-for="LastName" />
+    <input asp-for="LastName" required  />
 
     <button class="btn btn-primary">Book</button>
 

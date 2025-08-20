@@ -68,11 +68,12 @@
     <Build Include="dbo\Tables\Rooms.sql" />
     <Build Include="dbo\Tables\RoomTypes.sql" />
     <Build Include="dbo\StoredProcedures\spRoomTypes_GetAvailableRoomTypes.sql" />
-    <Build Include="dbo\StoredProcedures\spGuests_Inserts.sql" />
     <Build Include="dbo\StoredProcedures\spGetAvailableRooms.sql" />
     <Build Include="dbo\StoredProcedures\spBookings_Insert.sql" />
     <Build Include="dbo\StoredProcedures\spBookings_Search.sql" />
     <Build Include="dbo\StoredProcedures\spBookings_CheckIn.sql" />
+    <Build Include="dbo\StoredProcedures\spGuests_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spGetRoomType_ById.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />

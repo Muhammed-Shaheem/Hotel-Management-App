@@ -28,7 +28,7 @@
     <h2>Results</h2>
 
     <table class="table table-bordered  ">
-        <thead >
+        <thead>
             <tr>
                 <td><strong>RoomType</strong> </td>
                 <td> <strong>Description</strong></td>
@@ -37,40 +37,24 @@
             </tr>
 
         </thead>
-            <tbody>
+        <tbody>
 
-        @foreach (var roomType in Model.roomTypes)
-        {
+            @foreach (var roomType in Model.roomTypes)
+            {
 
                 <tr>
                     <td>@roomType.Title</td>
                     <td>@roomType.Description</td>
-                    <td> @string.Format("{0:C}",roomType.Price) </td>
-                    <td><a href="/BookRoom?Id=@roomType.Id">Book Room</a></td>
+                    <td> @string.Format("{0:C}", roomType.Price) </td>
+                    <td>
+                        <a href="/BookRoom?RoomTypeId=@roomType.Id&StartDate=@Model.StartDate.ToString("yyyy-MM-dd")&EndDate=@Model.EndDate.ToString("yyyy-MM-dd")">Book Room</a>
+                    </td>
                 </tr>
 
-        }
+            }
 
-            </tbody>    
+        </tbody>
     </table>
-   
+
 }
 
-@* @{
-    foreach (var roomType in Model.roomTypes)
-    {
-        <div class="container row text-center bg-danger-subtle">
-
-            <div class="col-6" style="border:1px solid black">
-                <h5>@roomType.Title</h5>
-            </div>
-
-            <div class="col-6 style=" style="border:1px solid black">
-                <h5>@roomType.Description</h5>
-            </div>
-        </div>
-    }
-}
-
-
- *@

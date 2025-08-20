@@ -15,7 +15,7 @@ public class RoomSearchModel : PageModel
     [BindProperty]
     [Required]
     [DataType(DataType.Date)]
-        
+
     public DateTime StartDate { get; set; } = DateTime.Today;
     [BindProperty]
     [Required]
@@ -34,11 +34,8 @@ public class RoomSearchModel : PageModel
     {
         roomTypes = db.GetAvailableRoomTypes(StartDate, EndDate);
         return Page();
-       
-    }
-
-    public void OnBookRoomClick()
-    {
 
     }
+
+
 }

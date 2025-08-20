@@ -28,7 +28,7 @@ public class SqlData : IDatabaseData
 
     public void BookGuest(string firstName, string lastName, DateTime startDate, DateTime endDate, int roomTypeId)
     {
-        GuestModel guest = db.LoadData<GuestModel, dynamic>("spGuests_Insert",
+        GuestModel guest = db.LoadData<GuestModel, dynamic>("sp_Guests_Insert",
                                          new { firstName, lastName },
                                          connectionStringName,
                                          true).First();
@@ -42,7 +42,7 @@ public class SqlData : IDatabaseData
 
 
         RoomModel room = db.LoadData<RoomModel, dynamic>(
-            "sp_GetAvailableRooms",
+            "spGetAvailableRooms",
             new { startDate, endDate, roomTypeId },
             connectionStringName,
             true).First();
@@ -74,4 +74,15 @@ public class SqlData : IDatabaseData
                     true);
     }
 
+    public RoomTypeModel? GetRoomTypeById(int id)
+    {
+        return db.LoadData<RoomTypeModel, dynamic>("spGetRoomType_ById",
+                                              new { id },
+                                              connectionStringName,
+                                              true).FirstOrDefault();
+
+        
+
+
+    }
 }
