@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using HotelAppLibrary.Data;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,8 +17,19 @@ namespace HotelApp.Desktop;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public MainWindow()
+    private readonly IDatabaseData db;
+
+    public MainWindow(IDatabaseData db)
     {
         InitializeComponent();
+        this.db = db;
     }
+
+    private void searchForGuest_Click(object sender, RoutedEventArgs e)
+    {
+        var bookings = db.SearchBookings(lastNameTxt.Text);
+        bookingsList.ItemsSource = bookings;
+    }
+
+
 }
