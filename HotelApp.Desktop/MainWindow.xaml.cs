@@ -1,4 +1,6 @@
 ﻿using HotelAppLibrary.Data;
+using HotelAppLibrary.Models;
+using Microsoft.Extensions.DependencyInjection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,7 +31,18 @@ public partial class MainWindow : Window
     {
         var bookings = db.SearchBookings(lastNameTxt.Text);
         bookingsList.ItemsSource = bookings;
+  
     }
 
+    private void checkIn_Click(object sender, RoutedEventArgs e)
+    {
 
+        var checkInBtn = (Button)sender;
+        var bookingData = (FullBookingModel)checkInBtn.DataContext;
+
+        var checkInWindow = App.serviceProvider.GetService<CheckInWindow>();
+        checkInWindow.PopuateCheckInInfo(bookingData);
+        checkInWindow.Show();
+
+    }
 }

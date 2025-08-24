@@ -19,5 +19,6 @@ begin
 	on rt.Id=r.RoomTypeId
 	where LastName = @lastName
 	and StartDate = CAST(GETDATE() as date)
+	and CheckedIn = 0
 
 end
