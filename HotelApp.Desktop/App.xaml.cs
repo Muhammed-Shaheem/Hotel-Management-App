@@ -19,7 +19,6 @@ public partial class App : Application
 
         var services = new ServiceCollection();
         services.AddTransient<ISqlDataAccess, SqlDataAccess>();
-        services.AddTransient<IDatabaseData, SqlData>();
         services.AddTransient<CheckInWindow>();
         services.AddTransient<ISqliteDataAccess, SqliteDataAccess>();
 
@@ -29,6 +28,22 @@ public partial class App : Application
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json");
         IConfiguration builder = config.Build();
+
+        var dbChoice = builder.GetValue<string>("DatabaseChoice").ToLower();
+        if (dbChoice == "sql")
+        {
+            services.AddTransient<IDatabaseData, SqlData>();
+
+        }
+        else if (dbChoice == "sqlite")
+        {
+            services.AddTransient<IDatabaseData, SqliteData>();
+
+        }
+        else
+        {
+            services.AddTransient<IDatabaseData, SqlData>();
+        }
 
         services.AddSingleton(builder);
         serviceProvider = services.BuildServiceProvider();

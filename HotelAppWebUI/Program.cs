@@ -7,11 +7,30 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddTransient<IDatabaseData, SqlData>();
+
+
 builder.Services.AddTransient<ISqlDataAccess, SqlDataAccess>();
 builder.Services.AddTransient<ISqliteDataAccess, SqliteDataAccess>();
+var dbChoice = builder.Configuration.GetValue<string>("DatabaseChoice").ToLower();
 
+if (dbChoice == "sql")
+{
+    builder.Services.AddTransient<IDatabaseData, SqlData>();
+
+}
+else if (dbChoice == "sqlite")
+{
+    builder.Services.AddTransient<IDatabaseData, SqliteData>();
+
+}
+else
+{
+    builder.Services.AddTransient<IDatabaseData, SqlData>();
+}
 var app = builder.Build();
+
+
+
 
 
 // Configure the HTTP request pipeline.
