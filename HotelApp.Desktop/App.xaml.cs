@@ -18,9 +18,10 @@ public partial class App : Application
         base.OnStartup(e);
 
         var services = new ServiceCollection();
-        services.AddTransient<IDataAccess, SqlDataAccess>();
+        services.AddTransient<ISqlDataAccess, SqlDataAccess>();
         services.AddTransient<IDatabaseData, SqlData>();
         services.AddTransient<CheckInWindow>();
+        services.AddTransient<ISqliteDataAccess, SqliteDataAccess>();
 
         services.AddTransient<MainWindow>();
 

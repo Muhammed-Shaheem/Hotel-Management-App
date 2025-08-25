@@ -7,7 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace HotelAppLibrary.Databases;
 
-public class SqlDataAccess : IDataAccess
+public class SqlDataAccess : ISqlDataAccess
 {
     private readonly IConfiguration config;
 

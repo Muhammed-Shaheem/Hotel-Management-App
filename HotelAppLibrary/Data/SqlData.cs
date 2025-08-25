@@ -5,11 +5,11 @@ namespace HotelAppLibrary.Data;
 
 public class SqlData : IDatabaseData
 {
-    private IDataAccess db;
+    private ISqlDataAccess db;
     private const string connectionStringName = "SqlDb";
 
 
-    public SqlData(IDataAccess db)
+    public SqlData(ISqlDataAccess db)
     {
 
         this.db = db;
