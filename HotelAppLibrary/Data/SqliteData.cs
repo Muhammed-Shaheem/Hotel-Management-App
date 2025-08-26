@@ -1,5 +1,6 @@
 ﻿using HotelAppLibrary.Databases;
 using HotelAppLibrary.Models;
+using System.Xml.Linq;
 
 namespace HotelAppLibrary.Data;
 
@@ -68,7 +69,10 @@ public class SqliteData : IDatabaseData
 
     public void CheckInGuest(int id)
     {
-        throw new NotImplementedException();
+        string sql = @"	update Bookings
+		set CheckedIn = 1
+		where  id = @id	";
+        db.SaveData(sql, new { id }, connectionStringName);
     }
 
     public List<RoomTypeModel> GetAvailableRoomTypes(DateTime startDate, DateTime endDate)
