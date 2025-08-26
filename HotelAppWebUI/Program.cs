@@ -3,6 +3,7 @@ using HotelAppLibrary.Databases;
 using HotelAppLibrary.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+SQLitePCL.Batteries.Init();
 
 // Add services to the container.
 builder.Services.AddRazorPages();

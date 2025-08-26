@@ -12,7 +12,6 @@ public class SqliteDataAccess : ISqliteDataAccess
 
     public SqliteDataAccess(IConfiguration config)
     {
-        SQLitePCL.Batteries.Init();
         this.config = config;
     }
     public List<T> LoadData<T, U>(string sqlStatement, U parameters, string connectionStringName)
