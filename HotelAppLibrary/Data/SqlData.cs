@@ -20,10 +20,12 @@ public class SqlData : IDatabaseData
     {
 
 
-        return db.LoadData<RoomTypeModel, dynamic>("dbo.spRoomTypes_GetAvailableRoomTypes",
+        var output = db.LoadData<RoomTypeModel, dynamic>("dbo.spRoomTypes_GetAvailableRoomTypes",
                                                            new { startDate, endDate },
                                                            connectionStringName,
                                                            true);
+        output.ForEach(x => x.Price = x.Price / 100);
+        return output;
     }
 
     public void BookGuest(string firstName, string lastName, DateTime startDate, DateTime endDate, int roomTypeId)
@@ -81,7 +83,7 @@ public class SqlData : IDatabaseData
                                               connectionStringName,
                                               true).FirstOrDefault();
 
-        
+
 
 
     }
