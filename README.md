@@ -10,8 +10,7 @@ This MVP (Minimum Viable Product) focuses on delivering just the core functional
 
 - ✅ Guest check-in and check-out
 - 🛏️ Room booking and availability tracking
-- 🔐 Role-based login (Admin & Staff)
-- 📊 Simple admin dashboard
+
 
 ## 🛠️ Tech Stack
 
@@ -19,7 +18,7 @@ This MVP (Minimum Viable Product) focuses on delivering just the core functional
 |---------------------|---------------------|
 | Backend             | ASP.NET Core (.NET 9) |
 | ORM / DB Access     | Dapper               |
-| Database            | SQL Server           |
+| Database            | SQL Server/Sqlite         |
 | API Design          | RESTful APIs         |
 | Frontend (Optional) |       |
 
