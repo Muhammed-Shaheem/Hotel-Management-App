@@ -19,7 +19,7 @@ This MVP (Minimum Viable Product) focuses on delivering just the core functional
 | Backend             | ASP.NET Core (.NET 9) |
 | ORM / DB Access     | Dapper               |
 | Database            | SQL Server/Sqlite         |
-| API Design          | RESTful APIs         |
+| API Design          |      |
 | Frontend (Optional) |       |
 
 ## 🎯 Purpose
