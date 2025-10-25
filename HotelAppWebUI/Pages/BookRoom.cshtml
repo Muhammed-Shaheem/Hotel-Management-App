@@ -3,21 +3,43 @@
 @{
     ViewData["Title"] = "Book Room";
 }
-<h1 class="accordion-header">Book A Room</h1>
 
-<h2>@Model.RoomType.Title</h2>
-<p>@Model.RoomType.Description</p>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow-sm p-4 rounded-4 modern-form-card">
+                <h1 class="text-center mb-4 fw-bold text-primary">Book A Room</h1>
 
-<form  method="post">
+                <h3 class="fw-semibold mb-2">@Model.RoomType.Title</h3>
+                <p class="text-muted mb-4">@Model.RoomType.Description</p>
 
-    <label asp-for="FirstName" ></label>
-    <input asp-for="FirstName" required />
+                <form method="post" class="needs-validation" novalidate>
+                    <!-- First Name -->
+                    <div class="form-floating mb-3">
+                        <input asp-for="FirstName" class="form-control" id="FirstName" required>
+                        <label for="FirstName">First Name</label>
+                        <div class="invalid-feedback">
+                            Please enter your first name.
+                        </div>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="form-floating mb-3">
+                        <input asp-for="LastName" class="form-control" id="LastName"  required>
+                        <label for="LastName">Last Name</label>
+                        <div class="invalid-feedback">
+                            Please enter your last name.
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold modern-btn">
+                        Book Now
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
     
-    
-    <label asp-for="LastName"></label>
-    <input asp-for="LastName" required  />
-
-    <button class="btn btn-primary">Book</button>
-
-
-</form>

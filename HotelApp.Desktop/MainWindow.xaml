@@ -6,74 +6,83 @@
         xmlns:local="clr-namespace:HotelApp.Desktop"
         mc:Ignorable="d" FontSize="20" FontFamily="Segoe UI"
         Title="Search Bookings" Height="450" Width="800">
-    <Grid Margin="20">
+    <Grid Margin="20" Background="#f5f5f5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-
-
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="28">Search For Rooms</TextBlock>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" >
-            <!--<TextBlock Margin="5" Text="First Name:" Grid.Row="1" Grid.Column="0"/>-->
-            <TextBox MinWidth="200" Name="lastNameTxt" Margin="5" ></TextBox>
-            <Button x:Name="searchForGuest"  Margin="5" Padding="5" Click="searchForGuest_Click">Search</Button>
+        <!-- Title -->
+        <TextBlock Grid.Row="0" FontSize="32" FontWeight="Bold" Foreground="#333" Margin="0 0 0 20">
+        Search For Rooms
+        </TextBlock>
+
+        <!-- Search Bar -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 0 0 20">
+            <TextBox Name="lastNameTxt" MinWidth="250" Padding="8" Margin="0 0 10 0"
+                 Background="White" BorderBrush="#ccc" BorderThickness="1"
+                 FontSize="16" />
+            <Button x:Name="searchForGuest" Padding="8 0" Width="120"
+                Background="#007ACC" Foreground="White" FontWeight="Bold"
+                BorderThickness="0" Click="searchForGuest_Click">
+                Search
+            </Button>
         </StackPanel>
 
-
-        <ListBox x:Name="bookingsList" ItemsSource="{Binding}"  Grid.Row="3" Grid.ColumnSpan="2" Margin="5 10 5 10" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxHeight="300" >
+        <!-- Bookings List -->
+        <ListBox x:Name="bookingsList" ItemsSource="{Binding}" Grid.Row="2"
+             ScrollViewer.VerticalScrollBarVisibility="Auto" MaxHeight="400"
+             Background="Transparent" BorderThickness="0" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                    <Border Background="White" CornerRadius="10" Margin="0 0 0 15" Padding="15"
+                        BorderBrush="#ddd" BorderThickness="1" 
+                        Effect="{DynamicResource DropShadowEffect}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="*"/>
+                            <StackPanel Grid.Column="0" VerticalAlignment="Center" >
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Foreground="#555">Reservation:</TextBlock>
+                                    <TextBlock Text="{Binding FirstName}" />
+                                    <TextBlock Text="{Binding LastName}" />
+                                </StackPanel>
 
-                        </Grid.RowDefinitions>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Foreground="#555">Room:</TextBlock>
+                                    <TextBlock Text="{Binding Title}" />
+                                </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" Grid.Row="0">
-                            <TextBlock FontWeight="Bold" Margin="5">Reservation:</TextBlock>
-                            <TextBlock Margin="5" Text="{Binding FirstName}" />
-                            <TextBlock Margin="5" Text="{Binding LastName}" />
-                        </StackPanel>
-                            <Button x:Name="checkIn" Margin="5" Padding="10" Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" VerticalAlignment="Center"   Click="checkIn_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Foreground="#555">Room Number:</TextBlock>
+                                    <TextBlock Text="{Binding RoomNumber}" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Foreground="#555">Total Cost:</TextBlock>
+                                    <TextBlock Text="{Binding TotalCost, StringFormat='c'}" />
+                                </StackPanel>
+                            </StackPanel>
+
+                            <Button x:Name="checkIn" Grid.Column="1" Padding="12 6" Width="120"
+                                Background="#28a745" Foreground="White" FontWeight="Bold"
+                                BorderThickness="0"  VerticalAlignment="Center"
+                                Click="checkIn_Click">
                                 Check In
-                            </Button >
-                        <StackPanel Orientation="Horizontal" Grid.Row="1">
-                            <TextBlock FontWeight="Bold" Margin="5">Room:</TextBlock>
-                            <TextBlock Margin="5" Text="{Binding Title}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Grid.Row="2">
-                            <TextBlock FontWeight="Bold" Margin="5">Room Number:</TextBlock>
-                            <TextBlock Margin="5" Text="{Binding RoomNumber}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Grid.Row="3">
-                            <TextBlock FontWeight="Bold" Margin="5">TotalCost:</TextBlock>
-                            <TextBlock Margin="5" Text="{Binding TotalCost, StringFormat='c'}" />
-                        </StackPanel>
-                    </Grid>
+                            </Button>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
-
             </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
+
 </Window>

@@ -4,57 +4,58 @@
     ViewData["Title"] = "Search Room";
 }
 
-<h1>Room Search</h1>
-<form method="post">
+<div class="container py-5">
+    <!-- Search Form Card -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow-sm p-4 rounded-4 modern-form-card">
+                <h1 class="text-center mb-4 fw-bold text-primary">Search Rooms</h1>
+                <form method="post" class="needs-validation" novalidate>
+                    <!-- Start Date -->
+                    <div class="form-floating mb-3">
+                        <input asp-for="StartDate" type="date" class="form-control" id="StartDate" placeholder="Start Date" required>
+                        <label for="StartDate">Start Date</label>
+                        <div class="invalid-feedback">Please select a start date.</div>
+                    </div>
 
+                    <!-- End Date -->
+                    <div class="form-floating mb-3">
+                        <input asp-for="EndDate" type="date" class="form-control" id="EndDate" placeholder="End Date" required>
+                        <label for="EndDate">End Date</label>
+                        <div class="invalid-feedback">Please select an end date.</div>
+                    </div>
 
-    <label asp-for="StartDate"></label>
-    <input asp-for="StartDate" />
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold modern-btn">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-
-
-    <label asp-for="EndDate"></label>
-    <input asp-for="EndDate" />
-
-
-    <button class="btn btn-primary" type="submit">Search</button>
-
-</form>
-
-
-
-@if (Model.roomTypes?.Count > 0)
-{
-    <h2>Results</h2>
-
-    <table class="table table-bordered  ">
-        <thead>
-            <tr>
-                <td><strong>RoomType</strong> </td>
-                <td> <strong>Description</strong></td>
-                <td><strong>Price</strong></td>
-                <td></td>
-            </tr>
-
-        </thead>
-        <tbody>
-
+    <!-- Results -->
+    @if (Model.roomTypes?.Count > 0)
+    {
+        <h2 class="mb-4 text-center fw-semibold">Available Rooms</h2>
+        <div class="row g-4">
             @foreach (var roomType in Model.roomTypes)
             {
-
-                <tr>
-                    <td>@roomType.Title</td>
-                    <td>@roomType.Description</td>
-                    <td> @string.Format("{0:C}", roomType.Price) </td>
-                    <td>
-                        <a href="/BookRoom?RoomTypeId=@roomType.Id&StartDate=@Model.StartDate.ToString("yyyy-MM-dd")&EndDate=@Model.EndDate.ToString("yyyy-MM-dd")">Book Room</a>
-                    </td>
-                </tr>
-
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 rounded-4">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">@roomType.Title</h5>
+                            <p class="card-text text-muted flex-grow-1">@roomType.Description</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="fw-semibold text-primary">@string.Format("{0:C}", roomType.Price)</span>
+                                <a class="btn btn-outline-primary btn-sm"
+                                   href="/BookRoom?RoomTypeId=@roomType.Id&StartDate=@Model.StartDate.ToString("yyyy-MM-dd")&EndDate=@Model.EndDate.ToString("yyyy-MM-dd")">
+                                    Book
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             }
+        </div>
+    }
+</div>
 
-        </tbody>
-    </table>
-
-}
 

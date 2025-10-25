@@ -24,7 +24,7 @@ public class SqlData : IDatabaseData
                                                            new { startDate, endDate },
                                                            connectionStringName,
                                                            true);
-        output.ForEach(x => x.Price = x.Price / 100);
+        output.ForEach(x => x.Price = x.Price);
         return output;
     }
 
