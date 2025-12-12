@@ -14,6 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -23,7 +24,9 @@
         </TextBlock>
 
         <!-- Search Bar -->
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 0 0 20">
+        <TextBlock Grid.Row="1" Margin="5"  FontFamily="Consolas">Last Name</TextBlock>
+
+        <StackPanel  Orientation="Horizontal" Grid.Row="2" Margin="5">
             <TextBox Name="lastNameTxt" MinWidth="250" Padding="8" Margin="0 0 10 0"
                  Background="White" BorderBrush="#ccc" BorderThickness="1"
                  FontSize="16" />

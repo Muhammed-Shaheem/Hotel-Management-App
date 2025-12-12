@@ -6,7 +6,8 @@ begin
  set nocount on;
 
 	
-select rt.Id, rt.title,rt.Description,rt.price from RoomTypes rt
+select rt.Id, rt.title,rt.Description,rt.price 
+from RoomTypes rt
 join Rooms r
 on rt.id=r.RoomTypeId
 where r.Id not in(
